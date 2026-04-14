@@ -14,8 +14,18 @@
 </head>
 <body>
 <nav class="navbar">
-    <a href="Index.html" class="nav-links">Formular</a>
-    <a href="Kontakt.html" class="nav-links">Kontakt</a>
+
+    <!-- Hamburger Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <!-- Links -->
+    <div class="nav-container" id="navMenu">
+        <a href="Kontakt.html" class="nav-links">Kontakt</a>
+        <a href="Steckbiref.html" class="nav-links">Steckbrief</a>
+    </div>
+
 </nav>
 <h1>Steckbrief</h1>
 <main>
@@ -36,5 +46,10 @@
     </picture>
     <p>Der BESTE Vater der Welt</p>
 </main>
+<script>
+    function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("active");
+    }
+</script>
 </body>
 </html>

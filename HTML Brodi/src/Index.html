@@ -14,8 +14,18 @@
 </header>
 
 <nav class="navbar">
-    <a href="Kontakt.html" class="nav-links">Kontakt</a>
-    <a href="Steckbiref.html" class="nav-links">Steckbrief</a>
+
+    <!-- Hamburger Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <!-- Links -->
+    <div class="nav-container" id="navMenu">
+        <a href="Kontakt.html" class="nav-links">Kontakt</a>
+        <a href="Steckbiref.html" class="nav-links">Steckbrief</a>
+    </div>
+
 </nav>
 <main>
     <form action="https://gibm.becknet.ch/formular/formular.php" method="POST">
@@ -75,6 +85,10 @@
 <footer>
     <p>© 2026 Erik Schmocker</p>
 </footer>
-
+<script>
+    function toggleMenu() {
+        document.getElementById("navMenu").classList.toggle("active");
+    }
+</script>
 </body>
 </html>

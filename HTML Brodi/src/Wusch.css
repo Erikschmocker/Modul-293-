@@ -26,6 +26,19 @@
 .nav-links:hover {
     transform: scale(1.2);
 }
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Container für Links */
+.nav-container {
+    display: flex;
+    gap: 15px;
+}
 main {
     a{
         color: black;
@@ -75,5 +88,119 @@ body {
     display: block;          /* Macht das Video zu einem eigenen Block-Element */
     width: 300px;            /* Kleiner gemacht, genau wie dein Inhalts-Viereck  */
     margin: 10px ;       /* Weniger Abstand nach oben/unten (10px) und mittig [cite: 195, 223] */
+
+}
+/* --- TABLET & HANDY (Alles unter 768px) --- */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block; /* Hamburger wird sichtbar */
+    }
+
+    .nav-container {
+        display: none;      /* Standardmäßig zu */
+        flex-direction: column;
+        width: 100%;
+        background: navy;
+        padding: 10px 0;
+        align-items: center;
+        gap: 10px;
+        /* Hier KEIN position: absolute mehr - super gemacht! */
+    }
+
+    /* Das sorgt dafür, dass das Menü aufgeht, wenn JS die Klasse hinzufügt */
+    .nav-container.active {
+        display: flex;
+    }
+
+    .navbar {
+        flex-direction: column;
+        height: auto;
+    }
+
+    body {
+        width: 95%; /* Auf kleinen Schirmen nutzen wir fast die ganze Breite */
+    }
+
+    /* Damit Bilder und Videos nicht über den Rand hinausragen */
+    img, video, iframe {
+        max-width: 100%; /* Das Element darf nie breiter als der Bildschirm sein */
+        height: auto;    /* Die Höhe passt sich automatisch an, damit nichts verzerrt */
+    }
+
+    /* Dein Video-Container braucht eine kleine Anpassung */
+    .mein-video {
+        width: 100%;     /* Auf dem Handy darf das Video ruhig die volle Breite nutzen */
+        margin: 10px 0;
+    }
+
+    /* Das Formular: Eingabefelder untereinander statt nebeneinander */
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    textarea {
+        width: 100%;     /* Macht die Felder schön breit und fingerfreundlich */
+        margin-bottom: 10px;
+    }
+    /* Ändere diesen Teil in deiner Media Query */
+    .nav-container {
+        display: none;
+        flex-direction: column;
+        /* position: absolute;  <-- Diese Zeile löschen wir oder kommentieren sie aus! */
+        width: 100%;
+        background: navy;
+        padding: 10px 0;
+        align-items: center;
+        gap: 10px; /* Ein bisschen Abstand zwischen den Buttons */
+    }
+
+    /* Und damit die Navbar weiß, dass sie jetzt wachsen darf: */
+    .navbar {
+        flex-direction: column; /* Der Hamburger oben, das Menü darunter */
+        height: auto;           /* Die Höhe passt sich dem Inhalt an */
+    }
+    /* --- HANDY KLEIN (unter 500px) --- */
+    @media (max-width: 500px) {
+
+        /* BODY Abstand nach aussen */
+        body {
+            width: 100%;
+            padding: 10px;
+        }
+
+        /* FORMULAR: alles untereinander */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Inputs schöner */
+        input,
+        textarea,
+        button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        /* Google Maps Abstand */
+        iframe {
+            width: 100%;
+            height: 300px;
+            padding: 5px;
+        }
+
+        /* Steckbrief: alles schön untereinander */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Bilder im Steckbrief */
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
 
 }
