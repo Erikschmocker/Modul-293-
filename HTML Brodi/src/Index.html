@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Formular</title>
+    <link rel="stylesheet" href="Wusch.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eriks website mit Formular und Kotackt und sogar einem Bild ">
+</head>
+<body>
+
+<header>
+
+</header>
+
+<nav class="navbar">
+    <a href="Kontakt.html" class="nav-links">Kontakt</a>
+    <a href="Steckbiref.html" class="nav-links">Steckbrief</a>
+</nav>
+<main>
+    <form action="https://gibm.becknet.ch/formular/formular.php" method="POST">
+
+        <label>Anrede *</label><br>
+        <input type="radio" id="frau" name="anrede" value="Frau" required>
+        <label for="frau">Frau</label>
+        <input type="radio" id="herr" name="anrede" value="Herr">
+        <label for="herr">Herr</label>
+        <input type="radio" id="anderes" name="anrede" value="Anderes">
+        <label for="anderes">Anderes</label>
+
+        <br><br>
+
+        <label for="vorname">Vorname *</label>
+        <input type="text" id="vorname" name="vorname" maxlength="100" required>
+
+        <label for="nachname">Nachname *</label>
+        <input type="text" id="nachname" name="nachname" maxlength="100" required>
+
+        <br><br>
+        <label for="strasse">Strasse *</label>
+        <input type="text" id="strasse" name="strasse" maxlength="100" required>
+
+        <label for="plz">PLZ *</label>
+        <input type="number" id="plz" name="plz" min="1000" max="9999" required>
+
+        <label for="ort">Ort *</label>
+        <input type="text" id="ort" name="ort" maxlength="100" >
+
+        <br><br>
+
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+
+        <br><br>
+
+        <label for="nachricht">Nachricht</label><br>
+        <textarea id="nachricht" name="nachricht" maxlength="100"></textarea>
+
+        <br><br>
+
+        <button type="submit">Senden</button>
+        <button type="reset">Löschen</button>
+
+    </form>
+<video class="mein-video" controls poster="Images/Lernen.png">
+    <source src="Images/IMG_7318 (1).mp4" type="video/mp4">
+    <source src="Images/Lernen.webm" type="video/webm">
+</video>
+<audio controls>
+  <source src="Images/Audio.m4a" type="audio/mpeg">
+    <source src="Images/Hey.mp3">
+</audio>
+</main>
+
+<footer>
+    <p>© 2026 Erik Schmocker</p>
+</footer>
+
+</body>
+</html>
