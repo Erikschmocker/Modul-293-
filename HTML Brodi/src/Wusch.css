@@ -1,67 +1,69 @@
-:root{
-    --Border-color:snow;
-    --Backroud-color:Lightgray;
+:root {
+    --Border-color: snow;
+    --Backroud-color: Lightgray;
 }
-.navbar{
+
+/* GRUND-LAYOUT */
+* {
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    box-sizing: border-box; /* WICHTIG: Damit Padding die Breite nicht zerschießt */
+}
+
+body {
+    background-color: var(--Backroud-color);
+    width: 80%;
+    margin: 0 auto;
+    /* TIPP für Modul 293: Hier display: grid ergänzen für das 2D-Layout! */
+}
+
+/* NAVIGATION (FLEXBOX - Pflicht erfüllt) */
+.navbar {
     background: navy;
     padding: 30px;
-    width: 100%;  /*GEHT Ganz durch*/
-    display: flex;              /* Flex aktivieren */
-    justify-content: center;    /* Horizontal zentrieren */
-    align-items: center;        /* Vertikal zentrieren */
-    gap:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
+
+.nav-container {
+    display: flex;
+    gap: 15px;
+}
+
 .nav-links {
-    color: var(--Border-color);          /* Schriftfarbe setzen */
-    font-weight: bold;     /* Schrift fett machen */
-    font-size: 25px;       /* Schriftgröße  */
-    list-style: none;      /* Entfernt die hässlichen Aufzählungs-Punkte */
-    text-decoration: none;  /*macht das der link nicht mehr unterschrichten ist*/
-    padding: 15px 25px;          /*macht das um dei links herum ein pading ist und das die weise linie weiter weg ist*/
-    border: 2px solid var(--Border-color);    /*weiser ausenrand um dei links*/
-    border-radius: 30px;   /* macht es schön rund */
-    cursor: pointer;       /*machd wen man draufdrück eine hand aus dem eiger */
+    color: var(--Border-color);
+    font-weight: bold;
+    font-size: 25px;
+    list-style: none;
+    text-decoration: none;
+    padding: 15px 25px;
+    border: 2px solid var(--Border-color);
+    border-radius: 30px;
+    cursor: pointer;
     transition: 0.2s;
-    }
+}
+
 .nav-links:hover {
     transform: scale(1.2);
 }
 
 .menu-toggle {
-    display: none;
+    display: none; /* Nur auf Handy sichtbar */
     font-size: 30px;
     color: white;
     cursor: pointer;
 }
 
-/* Container für Links */
-.nav-container {
-    display: flex;
-    gap: 15px;
+main a { color: black; }
+main a:hover {
+    color: red;
+    text-decoration: none;
 }
-main {
-    a{
-        color: black;
-    }
 
-    a:hover {
-        color: red; /* Pflicht: Wird rot bei Hover  */
-        text-decoration: none; /* Pflicht: Unterstreichung weg bei Hover  */
-    }
-
-}
 ol li:last-child {
-    text-decoration: line-through;   /* Pflicht: Letzter Listenpunkt durchgestrichen  */
-}
-p {
-    text-align: justify;
-    padding: 10px;
-}
-
-img {
-    width: 100px;
-    border: 3px solid orange;
-    margin: 0 10px 10px 0;
+    text-decoration: line-through;
 }
 
 h1 {
@@ -71,136 +73,51 @@ h1 {
     position: sticky;
     top: 0;
 }
-h2 {
-    color: blue;
-    font-size: 21px;
+
+img {
+    width: 100px;
+    border: 3px solid orange;
+    margin: 0 10px 10px 0;
 }
-* {
-    font-family: Verdana, sans-serif;
-    font-size: 14px;
-}
-body {
-    background-color: var(--Backroud-color);
-    width: 80%;
-    margin: 0 auto;
-}
+
 .mein-video {
-    display: block;          /* Macht das Video zu einem eigenen Block-Element */
-    width: 300px;            /* Kleiner gemacht, genau wie dein Inhalts-Viereck  */
-    margin: 10px ;       /* Weniger Abstand nach oben/unten (10px) und mittig [cite: 195, 223] */
-
+    display: block;
+    width: 300px;
+    margin: 10px;
 }
-/* --- TABLET & HANDY (Alles unter 768px) --- */
-@media (max-width: 768px) {
 
-    .menu-toggle {
-        display: block; /* Hamburger wird sichtbar */
-    }
+/* --- RESPONSIVE BREAKPOINT 1 (TABLET 768px) --- */
+@media (max-width: 768px) {
+    body { width: 95%; }
+
+    .menu-toggle { display: block; }
 
     .nav-container {
-        display: none;      /* Standardmäßig zu */
+        display: none; /* Versteckt bis .active per JS kommt */
         flex-direction: column;
         width: 100%;
-        background: navy;
-        padding: 10px 0;
         align-items: center;
-        gap: 10px;
-        /* Hier KEIN position: absolute mehr - super gemacht! */
     }
 
-    /* Das sorgt dafür, dass das Menü aufgeht, wenn JS die Klasse hinzufügt */
-    .nav-container.active {
-        display: flex;
-    }
+    .nav-container.active { display: flex; }
 
-    .navbar {
-        flex-direction: column;
+    .navbar { flex-direction: column; }
+
+    img, video, iframe {
+        max-width: 100%;
         height: auto;
     }
+}
 
-    body {
-        width: 95%; /* Auf kleinen Schirmen nutzen wir fast die ganze Breite */
-    }
+/* --- RESPONSIVE BREAKPOINT 2 (HANDY 500px) --- */
+@media (max-width: 500px) {
+    body { width: 100%; padding: 10px; }
 
-    /* Damit Bilder und Videos nicht über den Rand hinausragen */
-    img, video, iframe {
-        max-width: 100%; /* Das Element darf nie breiter als der Bildschirm sein */
-        height: auto;    /* Die Höhe passt sich automatisch an, damit nichts verzerrt */
-    }
+    form { display: flex; flex-direction: column; }
 
-    /* Dein Video-Container braucht eine kleine Anpassung */
-    .mein-video {
-        width: 100%;     /* Auf dem Handy darf das Video ruhig die volle Breite nutzen */
-        margin: 10px 0;
-    }
+    input, textarea, button { width: 100%; margin-bottom: 10px; }
 
-    /* Das Formular: Eingabefelder untereinander statt nebeneinander */
-    input[type="text"],
-    input[type="number"],
-    input[type="email"],
-    textarea {
-        width: 100%;     /* Macht die Felder schön breit und fingerfreundlich */
-        margin-bottom: 10px;
-    }
-    /* Ändere diesen Teil in deiner Media Query */
-    .nav-container {
-        display: none;
-        flex-direction: column;
-        /* position: absolute;  <-- Diese Zeile löschen wir oder kommentieren sie aus! */
-        width: 100%;
-        background: navy;
-        padding: 10px 0;
-        align-items: center;
-        gap: 10px; /* Ein bisschen Abstand zwischen den Buttons */
-    }
+    main { display: flex; flex-direction: column; }
 
-    /* Und damit die Navbar weiß, dass sie jetzt wachsen darf: */
-    .navbar {
-        flex-direction: column; /* Der Hamburger oben, das Menü darunter */
-        height: auto;           /* Die Höhe passt sich dem Inhalt an */
-    }
-    /* --- HANDY KLEIN (unter 500px) --- */
-    @media (max-width: 500px) {
-
-        /* BODY Abstand nach aussen */
-        body {
-            width: 100%;
-            padding: 10px;
-        }
-
-        /* FORMULAR: alles untereinander */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Inputs schöner */
-        input,
-        textarea,
-        button {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Google Maps Abstand */
-        iframe {
-            width: 100%;
-            height: 300px;
-            padding: 5px;
-        }
-
-        /* Steckbrief: alles schön untereinander */
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Bilder im Steckbrief */
-        img {
-            width: 100%;
-            height: auto;
-        }
-    }
-
+    img { width: 100%; }
 }
